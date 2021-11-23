@@ -63,13 +63,15 @@ FROM Categories C
 INNER JOIN Products P ON P.CategoryID = C.CategoryID
 INNER JOIN Suppliers S ON S.SupplierID = P.SupplierID
 
---FEDERAL SHIPPING iLE TAÞINMIÞVE NANCY'NÝN ALMIÞ OLDUÐU SÝPARÝÞLERÝ GÖSTERÝNÝZ.
+-- https://github.com/microsoft/sql-server-samples
 
---MÜÞTERÝ ADI,ONAYLAYAN ALICININ ADI,ALDIÐI ÜRÜNLERÝN ADINI LÝSTELEYÝN
+--FEDERAL SHIPPING iLE TAï¿½INMIï¿½VE NANCY'Nï¿½N ALMIï¿½ OLDUï¿½U Sï¿½PARï¿½ï¿½LERï¿½ Gï¿½STERï¿½Nï¿½Z.
 
---01.01.1998 tarihinden sonra Siparis veren müþterilerin isimlerini ve siparis tarihlerini listeleyiniz.
+--Mï¿½ï¿½TERï¿½ ADI,ONAYLAYAN ALICININ ADI,ALDIï¿½I ï¿½Rï¿½NLERï¿½N ADINI Lï¿½STELEYï¿½N
 
---10248 nolu Sipariþ hangi kargo sirketi ile gonderilmiþtir.
+--01.01.1998 tarihinden sonra Siparis veren mï¿½ï¿½terilerin isimlerini ve siparis tarihlerini listeleyiniz.
 
---TOFU isimli ürün alýnan sipariþlerin sipariþ numaralarýný listeleyiniz.
+--10248 nolu Sipariï¿½ hangi kargo sirketi ile gonderilmiï¿½tir.
+
+--TOFU isimli ï¿½rï¿½n alï¿½nan sipariï¿½lerin sipariï¿½ numaralarï¿½nï¿½ listeleyiniz.
 
