@@ -63,3 +63,13 @@ FROM Categories C
 INNER JOIN Products P ON P.CategoryID = C.CategoryID
 INNER JOIN Suppliers S ON S.SupplierID = P.SupplierID
 
+--FEDERAL SHIPPING iLE TAÞINMIÞVE NANCY'NÝN ALMIÞ OLDUÐU SÝPARÝÞLERÝ GÖSTERÝNÝZ.
+
+--MÜÞTERÝ ADI,ONAYLAYAN ALICININ ADI,ALDIÐI ÜRÜNLERÝN ADINI LÝSTELEYÝN
+
+--01.01.1998 tarihinden sonra Siparis veren müþterilerin isimlerini ve siparis tarihlerini listeleyiniz.
+
+--10248 nolu Sipariþ hangi kargo sirketi ile gonderilmiþtir.
+
+--TOFU isimli ürün alýnan sipariþlerin sipariþ numaralarýný listeleyiniz.
+
