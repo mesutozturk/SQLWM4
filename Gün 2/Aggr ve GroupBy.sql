@@ -84,16 +84,55 @@ WHERE UnitPrice > (
 )
 ORDER BY UnitPrice
 
-
-
-
 -- HANGÝ MÜÞTERÝLERÝM ORTALAMA SÝPARÝÞÝN ÜSTÜNDE SÝPARÝÞ VERMÝÞ VE NE KADARLIK SÝPARÝÞ VERMÝÞLER
+SELECT C.CompanyName,SUM((1-OD.Discount)*OD.UnitPrice*OD.Quantity) TUTAR
+FROM Orders O 
+JOIN [Order Details] OD ON OD.OrderID = O.OrderID
+JOIN Customers C ON C.CustomerID = O.CustomerID
+WHERE (1-OD.Discount)*OD.UnitPrice*OD.Quantity>
+(
+	SELECT AVG((1-OD.Discount)*OD.UnitPrice*OD.Quantity) TUTAR
+	FROM [Order Details] OD
+)
+GROUP BY C.CompanyName
+ORDER BY TUTAR DESC
+-- adet olarak
+SELECT C.CompanyName,COUNT(0) ADET
+FROM Orders O 
+JOIN Customers C ON C.CustomerID = O.CustomerID
+GROUP BY C.CompanyName
+HAVING COUNT(0) >
+(
+	SELECT AVG(SANAL.ADET) ORT
+	FROM(
+		SELECT O2.CustomerID,COUNT(0) ADET
+		FROM Orders O2
+		GROUP BY O2.CustomerID
+	) AS SANAL
+)
+ORDER BY ADET DESC
+
 
 -- HENÜZ ULAÞMAMIÞ SÝPARÝÞLERÝN TOPLAM MALÝYETÝ NEDÝR
+SELECT ROUND(SUM((1-OD.Discount)*OD.UnitPrice*OD.Quantity),2) Tutar
+FROM Orders O
+JOIN [Order Details] OD ON OD.OrderID = O.OrderID
+WHERE O.ShippedDate IS NULL
 
 -- HENÜZ ULAÞMAMIÞ ÜRÜNLER ORTALAMA KAÇ GÜNDÜR BEKLEMEKTE
+SELECT AVG(DATEDIFF(DAY,RequiredDate,GETDATE())) "Ortalama Bekleme"
+FROM Orders O
+WHERE O.ShippedDate IS NULL
 
 -- ORTALAMA TESLÝM ZAMANIMIZ(GÜN)
+SELECT AVG(DATEDIFF(DAY,O.OrderDate,O.ShippedDate)) "Ortalama Bekleme"
+FROM Orders O
+WHERE O.ShippedDate IS NOT NULL
 
 -- SÝPARÝÞ VERÝLEN ÜLKELERÝN LÝSTESÝ (AYNI ÜLKE 2 KERE GÖSTERÝLMEYECEK)
+
+SELECT DISTINCT ShipCountry  
+FROM Orders
+
+-- HENÜZ SÝPARÝÞ VERMEMEÝÞ MÜÞTERÝLER
 
