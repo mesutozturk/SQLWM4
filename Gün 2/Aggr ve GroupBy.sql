@@ -97,20 +97,21 @@ WHERE (1-OD.Discount)*OD.UnitPrice*OD.Quantity>
 GROUP BY C.CompanyName
 ORDER BY TUTAR DESC
 -- adet olarak
-SELECT C.CompanyName,COUNT(0) ADET
+SELECT TOP 5 C.CompanyName,COUNT(0) ADET
 FROM Orders O 
 JOIN Customers C ON C.CustomerID = O.CustomerID
 GROUP BY C.CompanyName
-HAVING COUNT(0) >
+HAVING COUNT(0) <
 (
 	SELECT AVG(SANAL.ADET) ORT
-	FROM(
+	FROM 
+	(
 		SELECT O2.CustomerID,COUNT(0) ADET
 		FROM Orders O2
 		GROUP BY O2.CustomerID
 	) AS SANAL
 )
-ORDER BY ADET DESC
+ORDER BY ADET ASC
 
 
 -- HENÜZ ULAÞMAMIÞ SÝPARÝÞLERÝN TOPLAM MALÝYETÝ NEDÝR
