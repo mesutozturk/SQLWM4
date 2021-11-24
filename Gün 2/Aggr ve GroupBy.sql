@@ -63,3 +63,27 @@ JOIN Orders O ON O.OrderID = OD.OrderID
 JOIN Employees E ON E.EmployeeID= O.EmployeeID
 GROUP BY E.FirstName,E.LastName
 ORDER BY Tutar DESC
+
+-- Hangi üründen ne kadarlýk sipariþ edilmiþ(YILLARA GÖRE GRUPLAYINIZ)
+
+SELECT P.ProductName,YEAR(O.OrderDate) YIL,ROUND(SUM((1-OD.Discount)*OD.UnitPrice*OD.Quantity),2) Tutar
+FROM [Order Details] OD
+JOIN Products P ON P.ProductID = OD.ProductID
+JOIN Orders O ON O.OrderID = OD.OrderID
+GROUP BY P.ProductName, YEAR(O.OrderDate)
+ORDER BY P.ProductName ASC, YEAR(O.OrderDate) DESC
+
+-- Hangi üründen ne kadarlýk sipariþ edilmiþ(AYA GÖRE GRUPLAYINIZ)
+
+-- ORTALAMA FÝYATIN ÜSTÜNDE SATTIÐIM ÜRÜNLERÝN LÝSTESÝNÝ GETÝRÝN
+
+-- HANGÝ MÜÞTERÝLERÝM ORTALAMA SÝPARÝÞÝN ÜSTÜNDE SÝPARÝÞ VERMÝÞ VE NE KADARLIK SÝPARÝÞ VERMÝÞLER
+
+-- HENÜZ ULAÞMAMIÞ SÝPARÝÞLERÝN TOPLAM MALÝYETÝ NEDÝR
+
+-- HENÜZ ULAÞMAMIÞ ÜRÜNLER ORTALAMA KAÇ GÜNDÜR BEKLEMEKTE
+
+-- ORTALAMA TESLÝM TARÝHÝMÝZ
+
+-- SÝPARÝÞ VERÝLEN ÜLKELERÝN LÝSTESÝ (AYNI ÜLKE 2 KERE GÖSTERÝLMEYECEK)
+
