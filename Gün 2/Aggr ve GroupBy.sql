@@ -76,6 +76,16 @@ ORDER BY P.ProductName ASC, YEAR(O.OrderDate) DESC
 -- Hangi üründen ne kadarlýk sipariþ edilmiþ(AYA GÖRE GRUPLAYINIZ)
 
 -- ORTALAMA FÝYATIN ÜSTÜNDE SATTIÐIM ÜRÜNLERÝN LÝSTESÝNÝ GETÝRÝN
+SELECT ProductName,UnitPrice
+FROM Products
+WHERE UnitPrice > (
+	SELECT AVG(P.UnitPrice) Ortalama
+	FROM Products P 
+)
+ORDER BY UnitPrice
+
+
+
 
 -- HANGÝ MÜÞTERÝLERÝM ORTALAMA SÝPARÝÞÝN ÜSTÜNDE SÝPARÝÞ VERMÝÞ VE NE KADARLIK SÝPARÝÞ VERMÝÞLER
 
@@ -83,7 +93,7 @@ ORDER BY P.ProductName ASC, YEAR(O.OrderDate) DESC
 
 -- HENÜZ ULAÞMAMIÞ ÜRÜNLER ORTALAMA KAÇ GÜNDÜR BEKLEMEKTE
 
--- ORTALAMA TESLÝM TARÝHÝMÝZ
+-- ORTALAMA TESLÝM ZAMANIMIZ(GÜN)
 
 -- SÝPARÝÞ VERÝLEN ÜLKELERÝN LÝSTESÝ (AYNI ÜLKE 2 KERE GÖSTERÝLMEYECEK)
 
