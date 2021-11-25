@@ -7,7 +7,7 @@ USE Northwind
 
 GO
 CREATE TABLE "Employees" (
-	"EmployeeID" "int" IDENTITY (1, 1) NOT NULL ,
+	"EmployeeID" "int" IDENTITY NOT NULL ,
 	"LastName" nvarchar (20) NOT NULL ,
 	"FirstName" nvarchar (10) NOT NULL ,
 	"Title" nvarchar (30) NULL ,

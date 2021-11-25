@@ -137,3 +137,9 @@ FROM Orders
 
 -- HENÜZ SÝPARÝÞ VERMEMEÝÞ MÜÞTERÝLER
 
+SELECT C.CompanyName,C.ContactName
+FROM Customers C
+WHERE C.CustomerID NOT IN(
+	SELECT DISTINCT O.CustomerID
+	FROM ORDERS O 
+)
